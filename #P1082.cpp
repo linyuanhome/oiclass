@@ -5,13 +5,13 @@ bool flag;
 int main(){
     cin>>in;
     while(in[in.size()-1]!='.'){
-        if(in.find('a')!=string::npos&&in.size()>out.size()){
+        if((in.find('a')!=string::npos||in.find('A')!=string::npos)&&in.size()>out.size()){
             out=in;
             flag=true;
         }
         cin>>in;
     }
-    if(in.find('a')!=string::npos&&in.size()-1>out.size()){
+    if((in.find('a')!=string::npos||in.find('A')!=string::npos)&&in.size()-1>out.size()){
         cout<<in;
         return 0;
     }
