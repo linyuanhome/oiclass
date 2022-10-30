@@ -36,8 +36,9 @@ int main(){
         cin>>ni;
         while(ni--){
             cin>>in;
-            inq.push(i)
+            inq.push(in);
         }
+        maxd[in]++;
     }
 
 }
