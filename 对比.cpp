@@ -1,46 +1,40 @@
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 #include <algorithm>
+
 using namespace std;
-#define NMAX 100000
-struct Crossing 
+int n, m,f[310][310];
+int a[310][310];
+int ans[310];
+int main()
 {
-	int x1, x2;
-	int x2index;
-};
-Crossing crossings[NMAX];
-inline bool cmp1(Crossing a, Crossing b) 
-{
-	return a.x1 < b.x1;
+    int n;
+    scanf("%d",&n);
+
+    for(int i = 1;i <= n;i++)
+    {
+        for(int j = 1;j <= n;j++)
+        {
+            scanf("%1d",&a[i][j]);
+        }
+    }
+    
+    for(int i = 1;i <= n;i++)
+    {
+        for(int j = 1;j <= n;j++)
+        {
+            if(a[i][j] == 1)
+                f[i][j] = min(f[i - 1][j - 1],min(f[i][j - 1],f[i - 1][j])) + 1;
+            for(int k = 2;k <= f[i][j];k++)
+                ans[k]++;
+        }
+    }
+    for(int i = 1;i <= n;i++)
+        if(ans[i])
+        {
+            printf("%d %d\n",i,ans[i]);
+        }
+    return 0;
 }
-inline bool cmp2(Crossing a, Crossing b) 
-{
-	return a.x2 < b.x2;
-}
-int main() 
-{
-	int n;
-	scanf("%d", &n);
-	for (int i = 0; i < n; i++) 
-	{
-		scanf("%d", &crossings[i].x1);
-		scanf("%d", &crossings[i].x2);
-	}
-	sort(crossings, crossings + n, cmp2);
-	for (int i = 0; i < n; i++) 
-	{
-		crossings[i].x2index = i;
-	}
-	sort(crossings, crossings + n, cmp1);
-	int answer = 0;
-	int maxX2indexSeen = -1;
-	for (int i = 0; i < n; i++) 
-	{
-		if (crossings[i].x2index == i && maxX2indexSeen == i-1) 
-		{
-			answer++;
-		}
-		maxX2indexSeen = max(maxX2indexSeen, crossings[i].x2index);
-	}
-	printf("%d", answer);
-}
+
