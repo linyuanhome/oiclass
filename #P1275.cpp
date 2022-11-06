@@ -7,13 +7,13 @@ private:
 public:
     cd();
     void add(int n1x,int n1y,int n2x,int n2y,int n3x,int n3y){
-        int b=min(n1x,min(n2x,n3x))+1,e=max(n1x,max(n2x,n3x))-1;
+        int b=min(n1x,min(n2x,n3x)),e=max(n1x,max(n2x,n3x));
         x[b]+=1;
-		x[e+1]-=1;
-        b=min(n1y,min(n2y,n3y))+1;
-        e=max(n1y,max(n2y,n3y))-1;
+		x[e-1]-=1;
+        b=min(n1y,min(n2y,n3y));
+        e=max(n1y,max(n2y,n3y));
         y[b]+=1;
-		y[e+1]-=1;
+		y[e-1]-=1;
     }
     int outx(int in){
         vector<int>a={x[0]};
@@ -29,9 +29,9 @@ public:
     }
 };
 cd::cd(){
-    for(int i=0;i<=1000;i++)
+    for(int i=0;i<=1000005;i++)
         x.push_back(0);
-    for(int i=0;i<=1000;i++)
+    for(int i=0;i<=1000005;i++)
         y.push_back(0);
 }
 int n,d;
