@@ -1,7 +1,6 @@
 #include <iostream>
 #include <math.h>
 using namespace std;
-
 // 定义“画布”，2188=3⁷+1，即7阶“套娃型”的尺寸
 bool output[2188][2188];
 // 定义制造“套娃型”的递归函数
@@ -21,6 +20,7 @@ void draw(int size, int xp, int yp) {
 }
 
 int main() {
+    freopen("D:\\projects\\github\\oiclass\\a.txt","w",stdout);
     draw(7, 0, 0);        // 画一个7阶的“套娃型”方便后面输出
     int n; 
     cin >> n;
